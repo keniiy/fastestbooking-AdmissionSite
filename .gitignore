@@ -1,0 +1,7 @@
+/node_modules
+.env
+db.json
+tmp
+he
+index.js
+.vscode/
