@@ -24,6 +24,8 @@ Node.js, Express framework, MongoDB with Mongoose Redis, Queue, Kue,
 
 To get the server running locally:
 
+Make sure you also have redis installed locally
+
 - Clone this repo
 - **npm install** to install all required dependencies
 - **npm start** to start the local server
