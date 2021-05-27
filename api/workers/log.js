@@ -11,7 +11,7 @@ async function CreateApplicationLogs(job, done) {
       program: data.program,
       semester: data.semester,
     });
-    if (autoCreateApplication) {
+    if (autoCreateApplication.studentId) {
       return done();
     }
     return done(new Error('Unable to create admission'));

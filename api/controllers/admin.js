@@ -9,7 +9,17 @@ module.exports = {
 
     greetAdmin(req, res) {
         return successResponse(res, 200, "Hello Admin, how you doing Today, let check up some admission")
+    },
+
+    async getListOfApplication(req, res) {
+        try {
+            const fetchAllApplication = await models.Application.find();
+            return successResponse(res, 200, "successfully fetch all application", fetchAllApplication)
+        } catch (error) {
+            return errorHelper(res, 500, 'Internal Server Error')
+        }
     }
+
 //   async createStudent(req, res) {
 //     try {
 //       const student = await models.Student.create({

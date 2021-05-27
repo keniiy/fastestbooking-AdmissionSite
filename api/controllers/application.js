@@ -20,7 +20,7 @@ module.exports = {
           program: req.body.program,
           semester: req.body.semester,
       };
-        queue.create('CreateApplicationLogs', studentApplication).priority(-10).attempts(5).save();
+        queue.create('CreateApplicationLogs', studentApplication).save();
         queue.process('CreateApplicationLogs', (job, done) => {
             CreateApplicationLogs(job, done);
           done();

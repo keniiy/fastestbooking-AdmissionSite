@@ -11,5 +11,9 @@ router.get('/',
     Controllers.greetAdmin
 );
 
+router.get('/get-all-student-application', 
+    Controllers.getListOfApplication
+);
+
 
 module.exports = router;
