@@ -12,9 +12,4 @@ router.get('/:id',
     Controllers.getStudentProfile
 );
 
-router.get('update-profile/:id', 
-    studentValidations.validateStudent,
-    Controllers.getStudentProfile
-);
-
 module.exports = router;
