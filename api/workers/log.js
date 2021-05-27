@@ -20,6 +20,22 @@ async function CreateApplicationLogs(job, done) {
   }
 }
 
+async function deleteStudentApplicationAndAccount(job, done) {
+  try {
+    const { data } = job;
+    const autoCreateApplication = await models.Application.findOneAndDelete({
+      studentId: data.Student,
+    });
+    if (autoCreateApplication.studentId) {
+      return done(new Error('Unable to deleted application'));
+    }
+    return done();
+  } catch (error) {
+    return error;
+  }
+}
+
 module.exports = {
-  CreateApplicationLogs
+  CreateApplicationLogs,
+  deleteStudentApplicationAndAccount
 };

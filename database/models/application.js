@@ -9,11 +9,14 @@ const applicationSchema = new mongoose.Schema(
     program: {
       type: String,
       required: [true, 'please choose a program'],
-
+      trim: true,
+      lowercase: true,
     },
     semester: {
       type: String,
       required: [true, 'please choose a semester name'],
+      trim: true,
+      lowercase: true,
     },
     admitted: {
       type: Boolean,
