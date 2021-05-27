@@ -80,7 +80,7 @@ module.exports = {
         userName: 1,
         email: 1,
       });
-      //should have removed the admitted field but left it for understand purpose
+      //should have removed the admitted field but left it for understanding purpose
       if (!checkAdmission.admitted) {
         const admissionInfo = 'You have not been given admission check back later'
         return successResponse(res, 200, 'successfully fetched admission profile ', {checkAdmission, admissionInfo})

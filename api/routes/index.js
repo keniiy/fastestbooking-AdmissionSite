@@ -5,7 +5,7 @@ const kue = require('kue');
 const kueUiExpress = require('kue-ui-express');
 const applicationRoutes = require('./application');
 const adminRoutes = require('./admin');
-
+const studentRoutes = require('./student');
 
 const app = express();
 app.use(cors());
@@ -27,5 +27,6 @@ app.get('/', (req, res) => {
 
 app.use('/application', applicationRoutes);
 app.use('/admin', adminRoutes);
+app.use('/student', studentRoutes);
 
 module.exports = app;
