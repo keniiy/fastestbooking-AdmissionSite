@@ -22,7 +22,14 @@ router.post('/get-application-by-department',
 
 router.delete('/delete-student-application-and-account/:id', 
     adminValidations.validateStudent,
-    Controllers.getListByDepartment
+    Controllers.deleteApplicationProcess
 );
+
+router.post('/update-student-admission-status/:id', 
+    adminValidations.validateStudent,
+    adminValidations.validateStatusField,
+    Controllers.changeStudentAdmissionStatus
+);
+
 
 module.exports = router;

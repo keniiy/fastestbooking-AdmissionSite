@@ -51,4 +51,26 @@ module.exports = {
           return errorHelper(res, 500, "Internal Server Error");
         }
       },
+
+      async changeStudentAdmissionStatus(req, res) {
+        try {
+          const { id } = req.params;
+          const { status } = req.body
+          const editedApplication = await models.Application.findOneAndUpdate({
+          studentId: id
+        },
+        {
+          admitted : status,
+        },
+        {returnOriginal: false});
+          return successResponse(
+            res,
+            201,
+            'Successfully updated Student Application',
+            editedApplication
+          );
+        } catch (error) {
+          return errorHelper(res, 500, error.message)
+        }
+      },
 };
