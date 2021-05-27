@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post(
   '/submit-application',
-  
+  applicationValidations.validateStudentApplication
 );
 
 module.exports = router;

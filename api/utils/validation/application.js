@@ -3,7 +3,7 @@ const { errorHelper, successResponse } = require('../helpers/response');
 const models = require('../../../database/models/index');
 
 module.exports = {
-  async validateUserOnSignup(req, res, next) {
+  async validateStudentApplication(req, res, next) {
     const validator = new Validator(req.body, {
       firstName: 'required|string',
       lastName: 'required|string',
