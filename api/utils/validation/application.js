@@ -31,5 +31,35 @@ module.exports = {
     }
   },
 
-  
+  async validateUpdateApplication(req, res, next) {
+    try {
+      const validator = new Validator(req.body, {
+        program: 'string',
+        semester: 'string',
+      });
+
+      if (validator.fails()) {
+        return errorHelper(res, 400, validator.errors.all());
+      }
+      return next();
+    } catch (error) {
+      return errorHelper(res, 500 , 'Internal Server error');
+    }
+  },
+
+  async validateStudent(req, res, next) {
+    try {
+      const { id } = req.params
+      const exist = await models.Application.findOne({
+        studentId: id
+      });
+      if (exist) {
+        return next()
+      }  
+
+      return errorHelper(res, 500, 'sorry student user does not exist')
+    } catch (error) {
+      return errorHelper(res, 500 , 'Internal Server error');
+    }
+  },
 };

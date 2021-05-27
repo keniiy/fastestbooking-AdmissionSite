@@ -12,10 +12,11 @@ router.post(
   Controllers.createStudent
 );
 
-router.post(
-  '/update-application',
-    applicationValidations.validateStudentApplication,
-    Controllers.createStudent
+router.patch(
+  '/update-application/:id',
+    applicationValidations.validateUpdateApplication,
+    applicationValidations.validateStudent,
+    Controllers.UpdateApplication
 );
 
 module.exports = router;

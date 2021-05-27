@@ -7,7 +7,7 @@ async function CreateApplicationLogs(job, done) {
   try {
     const { data } = job;
     const autoCreateApplication = await models.Application.create({
-      StudentId: data.id,
+      studentId: data.Student,
       program: data.program,
       semester: data.semester,
     });

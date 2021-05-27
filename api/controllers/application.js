@@ -15,7 +15,7 @@ module.exports = {
       });
       if (student._id) {
         const studentApplication = {
-          id: req.body._id,
+          Student: student._id,
           program: req.body.program,
           semester: req.body.semester,
       };
@@ -36,7 +36,34 @@ module.exports = {
       };
       return errorHelper(res, 400, 'Application could not be created');
     } catch (error) {
-      return errorHelper(res, 500, error.message);
+      return errorHelper(res, 500, "Internal Server Error");
     }
-  }
+  },
+
+  async UpdateApplication(req, res) {
+    try {
+	  const { id } = req.params;
+    console.log(id);
+      const {
+        program,
+        semester,
+      } = req.body;
+	  const editedApplication = await models.Application.findOneAndUpdate({
+      studentId: id
+    },
+    {
+      program,
+      semester,
+    },
+    {returnOriginal: false});
+      return successResponse(
+        res,
+        201,
+        'Successfully updated Application',
+        editedApplication
+      );
+    } catch (error) {
+      return errorHelper(res, 500, error.message)
+    }
+  },
 };
