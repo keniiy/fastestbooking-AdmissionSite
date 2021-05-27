@@ -21,7 +21,14 @@ router.patch(
 
 router.get(
     '/check-application/:id',
-      Controllers.checkAdmissionStatus
+    applicationValidations.validateStudent,
+    Controllers.checkAdmissionStatus
+);
+
+router.delete(
+    '/delete-application/:id',
+    applicationValidations.validateStudent,
+    Controllers.deleteApplication
 );
 
 module.exports = router;

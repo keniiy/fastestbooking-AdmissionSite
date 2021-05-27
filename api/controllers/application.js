@@ -3,6 +3,7 @@ const models = require('../../database/models');
 const queue = require('../../database/config/redisKueConfig');
 const { successResponse, errorHelper } = require('../utils/helpers/response');
 const { CreateApplicationLogs } = require('../workers/log');
+const { response } = require('express');
 
 module.exports = {
   async createStudent(req, res) {
@@ -87,6 +88,24 @@ module.exports = {
    
       const admissionInfo = `Hello ${checkAdmission.studentId.lastName}, we are happy to inform you that have been admitted into LAGOS STATE UNIVERSITY check your profile for more information`
       return successResponse(res, 200, 'successfully fetched admission profile ', {checkAdmission, admissionInfo})
+    } catch (error) {
+      return errorHelper(res, 500, 'Internal server Error');
+    }
+  },
+
+  async deleteApplication(req, res) {
+    try {
+      const { id } = req.params;
+
+      const checkAdmission = await models.Application.findOneAndDelete({
+        studentId: id
+      });
+
+      if(checkAdmission) {
+        return successResponse (res, 200, 'Your application as been terminated you wont be able to apply till next Spring')
+      }
+
+      return errorHelper (res, 500, "you haven't enrolled yet" )
     } catch (error) {
       return errorHelper(res, 500, 'Internal server Error');
     }
