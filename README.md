@@ -44,5 +44,5 @@ REDIS=""
 ```
 
 ## Endpoints
-😃Documentation for Endpoints can be found [here](https://web.postman.co/workspace/My-Workspace~100f2a60-2055-4fc9-82fb-8f968697c281/documentation/3210014-8a81d3aa-f910-40e0-b616-c20b1139d0a4)
+😃Documentation for Endpoints can be found [here](https://documenter.getpostman.com/view/3210014/TzXxjHgZ)
 
