@@ -12,4 +12,10 @@ router.post(
   Controllers.createStudent
 );
 
+router.post(
+  '/update-application',
+    applicationValidations.validateStudentApplication,
+    Controllers.createStudent
+);
+
 module.exports = router;

@@ -19,6 +19,10 @@ const applicationSchema = new mongoose.Schema(
       trim: true,
       lowercase: true,
     },
+    admitted: {
+      type: Boolean,
+      default: false
+    },
     created_at: {
       type: Date,
     },

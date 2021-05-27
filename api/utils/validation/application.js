@@ -25,9 +25,11 @@ module.exports = {
         console.log('userName, email');
         return next();
       }
-      return errorHelper(res, 400, 'Applicant already registered with email or Username');
+      return errorHelper(res, 400, 'You have already submitted admission go to the update application page if you want to update');
     } catch (error) {
       return error(res, 500, 'Internal Server Error');
     }
   },
+
+  
 };
