@@ -22,7 +22,8 @@ const studentSchema = new mongoose.Schema(
       lowercase: true,
     },
     userName: {
-      type: Date,
+      type: String,
+      unique: true,
       required: [true, 'student must have a user name'],
       trim: true,
     },

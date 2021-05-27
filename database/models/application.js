@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const applicationSchema = new mongoose.Schema(
   {
-    student: {
+    studentId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'student',
     },
@@ -14,10 +14,17 @@ const applicationSchema = new mongoose.Schema(
     },
     semester: {
       type: String,
-      unique: true,
       required: [true, 'please choose a semester name'],
       trim: true,
       lowercase: true,
+    },
+    admitted: {
+      type: Boolean,
+      default: false
+    },
+    updated_at: {
+      type : Date, 
+      default: Date.now 
     }
 });
 
