@@ -18,6 +18,13 @@ const applicationSchema = new mongoose.Schema(
       required: [true, 'please choose a semester name'],
       trim: true,
       lowercase: true,
+    },
+    created_at: {
+      type: Date,
+    },
+    updated_at: {
+      type : Date, 
+      default: Date.now 
     }
 });
 

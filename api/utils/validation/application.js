@@ -9,25 +9,25 @@ module.exports = {
       lastName: 'required|string',
       email: 'required|string|email',
       userName: 'required|string',
-      program: 'string',
-      semester: 'required|date',
+      program: 'required|string',
+      semester: 'required|string',
     });
     if (validator.fails()) {
       return errorHelper(res, 400, validator.errors.all());
     }
     try {
       const { userName, email } = req.body;
+      console.log(userName, email);
       const applicant = await models.Student.findOne(
         { $or: [{ email }, { userName }] },
-        '_id',
-      ).exec();
+      )
       if (!applicant) {
+        console.log('userName, email');
         return next();
       }
-      const allErrors = 'Applicant already registered with email or Username';
-      return errorHelper(res, 400, allErrors);
+      return errorHelper(res, 400, 'Applicant already registered with email or Username');
     } catch (error) {
-      return next({ message: 'Error validating student Application' });
+      return error(res, 500, 'Internal Server Error');
     }
   },
 };

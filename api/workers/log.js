@@ -6,7 +6,7 @@ const models = require('../../database/models');
 async function CreateApplicationLogs(job, done) {
   try {
     const { data } = job;
-    const autoCreateApplication = await models.Student.create({
+    const autoCreateApplication = await models.Application.create({
       StudentId: data.id,
       program: data.program,
       semester: data.semester,
