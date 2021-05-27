@@ -66,4 +66,29 @@ module.exports = {
       return errorHelper(res, 500, error.message)
     }
   },
+
+  async checkAdmissionStatus(req, res) {
+    try {
+      const { id } = req.params;
+
+      const checkAdmission = await models.Application.findOne({
+        studentId: id
+      }).populate('studentId', {
+        firstName: 1,
+        lastName: 1,
+        userName: 1,
+        email: 1,
+      });
+      //should have removed the admitted field but left it for understand purpose
+      if (!checkAdmission.admitted) {
+        const admissionInfo = 'You have not been given admission check back later'
+        return successResponse(res, 200, 'successfully fetched admission profile ', {checkAdmission, admissionInfo})
+      }
+   
+      const admissionInfo = `Hello ${checkAdmission.studentId.lastName}, we are happy to inform you that have been admitted into LAGOS STATE UNIVERSITY check your profile for more information`
+      return successResponse(res, 200, 'successfully fetched admission profile ', {checkAdmission, admissionInfo})
+    } catch (error) {
+      return errorHelper(res, 500, 'Internal server Error');
+    }
+  },
 };

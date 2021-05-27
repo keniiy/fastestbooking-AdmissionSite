@@ -34,8 +34,8 @@ module.exports = {
   async validateUpdateApplication(req, res, next) {
     try {
       const validator = new Validator(req.body, {
-        program: 'string',
-        semester: 'string',
+        program: 'required|string',
+        semester: 'required|string',
       });
 
       if (validator.fails()) {

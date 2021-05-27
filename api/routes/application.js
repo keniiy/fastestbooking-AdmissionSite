@@ -19,4 +19,9 @@ router.patch(
     Controllers.UpdateApplication
 );
 
+router.get(
+    '/check-application/:id',
+      Controllers.checkAdmissionStatus
+);
+
 module.exports = router;
